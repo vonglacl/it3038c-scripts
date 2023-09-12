@@ -1,0 +1,17 @@
+original_line="On Sat Aug 28 14:23:53 EDT 2021, there were 28756489 positive cases, 74582825 negative tests, 500500 deaths and 776361 hospitalized."
+
+date_info=$(echo "$original_line" | awk -F 'On |, there were | positive cases, | negative tests, | deaths and | hospitalized.' '{print $2}')
+
+positive_cases=$(echo "$original_line" | awk -F 'positive cases, ' '{print $2}' | awk '{print $1}')
+
+negative_tests=$(echo "$original_line" | awk -F 'negative tests, ' '{print $2}' | awk '{print $1}')
+
+deaths=$(echo "$original_line" | awk -F 'deaths and ' '{print $2}' | awk '{print $1}')
+
+hospitalized=$(echo "$original_line" | awk -F 'hospitalized.' '{print $1}' | awk '{print $NF}')
+
+new_info="Additional Information: 10000 new positive cases, 20000 new negative tests, 100 new deaths."
+
+updated_line="On $date_info, there were $(($positive_cases + 10000)) positive cases, $(($negative_tests + 20000)) negative tests, $(($deaths + 100)) deaths and $hospitalized hospitalized. $new_info"
+
+echo "$updated_line"updated
