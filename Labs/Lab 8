@@ -1,20 +1,20 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://example.com'
+url = 'https://www.apple.com/macbook-pro/'
 
 response = requests.get(url)
 
 if response.status_code == 200:
-    # Parse the HTML content of the page using BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
 
-  
-    headings = soup.find_all('h1')
+    product_name = soup.find('h1', class_='as-productname').text
+    product_price = soup.find('span', class_='as-price-currentprice').text
+    product_description = soup.find('div', class_='as-productdescription').text.strip()
 
-    # Print the extracted data
-    for heading in headings:
-        print(heading.text)
+    print("Product Name:", product_name)
+    print("Price:", product_price)
+    print("Description:", product_description)
 else:
-    print('Failed to retrieve the web page.')
+    print("Failed to retrieve the page. Status code:", response.status_code)
 
