@@ -1,0 +1,24 @@
+import requests
+
+api_url = "http://vonglacl-win:135/widgets"
+
+try:
+    response = requests.get(api_url)
+    response.raise_for_status()  # Raise an exception for any HTTP error
+
+    data = response.json()  # Parse the JSON response into a Python dictionary
+
+    widgets = data.get("widgets", [])
+
+    if not widgets:
+        print("No widgets found.")
+    else:
+        print("Widget List:")
+        for widget in widgets:
+            widget_name = widget.get("name", "Unknown Name")
+            widget_color = widget.get("color", "Unknown Color")
+            print(f"Widget Name: {widget_name}, Color: {widget_color}")
+except requests.exceptions.RequestException as e:
+    print(f"An error occurred while calling the API: {e}")
+except ValueError as e:
+    print(f"Error parsing JSON response: {e}")
