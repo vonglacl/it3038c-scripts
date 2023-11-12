@@ -1,4 +1,4 @@
-Description:
+## Description
 
 Once you run the code, the sentence "Please enter the countdown time in seconds" will show up in the results.
 
