@@ -17,7 +17,7 @@ def cleanup_computer():
     # Empty the recycle bin
     recycle_bin = os.path.join(os.environ.get("SystemRoot"), "RECYCLER")
     if os.path.exists(recycle_bin):
-        print("Emptying the Recycle Bin")
+        print("Emptying your Recycle Bin")
         for item in os.listdir(recycle_bin):
             item_path = os.path.join(recycle_bin, item)
             try:
@@ -30,4 +30,4 @@ def cleanup_computer():
 
 if __name__ == "__main__":
     cleanup_computer()
-    print("Cleanup complete.")
+    print("Cleanup process is complete.")
