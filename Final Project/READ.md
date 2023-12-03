@@ -22,4 +22,4 @@ The last part of this script involves emptying your recycle bin. It's a good ide
 
 After all of your code customizations are in order, you should be good to run the script!
 
-The result of this will clean up your computer.
+If successful, he result of this will print "Cleanup process is complete." 
