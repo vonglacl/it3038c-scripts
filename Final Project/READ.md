@@ -8,7 +8,7 @@ Before running this script, there are a few things to be aware of:
 
 1. Deleting files and directories permanently can result in data loss. 
 
-2: This script is designed for Windows systems. If using a different operating system, you may need to modify the script.
+2. This script is designed for Windows systems. If using a different operating system, you may need to modify the script.
 
 3. Depending on the directories you want to clean up, you might need to run the script with administrative privileges.
 
