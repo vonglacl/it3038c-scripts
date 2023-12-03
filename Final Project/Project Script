@@ -1,0 +1,33 @@
+import os
+import shutil
+
+def cleanup_computer():
+    # Specify the directories that you want to be cleaned
+    temp_directories = [
+        os.path.join(os.environ.get("TEMP"), "temp"),
+        os.path.join(os.environ.get("LOCALAPPDATA"), "Temp"),
+    ]
+
+    # Delete temporary files on your computer
+    for temp_dir in temp_directories:
+        if os.path.exists(temp_dir):
+            print(f"Cleaning up: {temp_dir}")
+            shutil.rmtree(temp_dir)
+
+    # Empty the recycle bin
+    recycle_bin = os.path.join(os.environ.get("SystemRoot"), "RECYCLER")
+    if os.path.exists(recycle_bin):
+        print("Emptying the Recycle Bin")
+        for item in os.listdir(recycle_bin):
+            item_path = os.path.join(recycle_bin, item)
+            try:
+                if os.path.isfile(item_path) or os.path.islink(item_path):
+                    os.unlink(item_path)
+                elif os.path.isdir(item_path):
+                    shutil.rmtree(item_path)
+            except Exception as e:
+                print(f"Failed to delete {item_path}: {e}")
+
+if __name__ == "__main__":
+    cleanup_computer()
+    print("Cleanup complete.")
